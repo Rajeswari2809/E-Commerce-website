@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Simple E-commerce Website">
     <title>My E-Commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            padding-bottom: 60px;
         }
         header {
             background-color: #333;
@@ -80,25 +80,44 @@
             color: white;
             text-align: center;
             padding: 10px;
+            position: fixed;
             width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>My E-Commerce Store</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Shop</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-            <span style="float:right; margin-left: 20px; font-weight: bold; color: yellow;">
-                🛒 Cart: <span id="cart-count">0</span>
-            </span>
-        </nav>
-    </header>
+<header>
+    <h1>My E-Commerce Store</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about-us.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <span style="float:right; margin-left: 20px; font-weight: bold; color: yellow;">
+            🛒 Cart: <span id="cart-count">0</span>
+        </span>
+    </nav>
+</header>
 
+<script>
+    let cartCount = 0;
+
+    // Get all add-to-cart buttons
+    const buttons = document.querySelectorAll('.add-to-cart');
+    const cartDisplay = document.getElementById('cart-count');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent page from reloading
+            cartCount++;
+            cartDisplay.textContent = cartCount;
+        });
+    });
+</script>
+<body>
+    <!-- Main Content Section with Products -->
     <section class="container">
+        <!-- Product 1 -->
         <div class="product">
             <img src="https://images.pexels.com/photos/4939936/pexels-photo-4939936.jpeg?cs=srgb&dl=pexels-chuck-4939936.jpg&fm=jpg" alt="Product Image">
             <h3>Product 1</h3>
@@ -107,6 +126,7 @@
             <a href="#" class="btn add-to-cart">Add to Cart</a>
         </div>
         
+        <!-- Product 2 -->
         <div class="product">
             <img src="https://burst.shopifycdn.com/photos/wood-leather-watches.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="Product Image">
             <h3>Product 2</h3>
@@ -115,14 +135,16 @@
             <a href="#" class="btn add-to-cart">Add to Cart</a>
         </div>
 
+        <!-- Product 3 -->
         <div class="product">
             <img src="https://img.freepik.com/premium-photo/collection-beauty-products-stone-with-plants-dark-background_926968-60.jpg" alt="Product Image">
             <h3>Product 3</h3>
             <p>Product description goes here. This is a short description of the product.</p>
             <p class="price">$39.99</p>
-            <a href="#" class="btn add-to-cart">Add to Cart</a>
+           <a href="#" class="btn add-to-cart">Add to Cart</a>
         </div>
 
+        <!-- Product 4 -->
         <div class="product">
             <img src="https://tse2.mm.bing.net/th/id/OIP.fiR7fmXAiUQQ1IZeT1OevAHaHa?r=0&pid=ImgDet&w=182&h=182&c=7&o=7&rm=3" alt="Product Image">
             <h3>Product 4</h3>
@@ -132,22 +154,9 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 My E-Commerce Store | All Rights Reserved</p>
     </footer>
-
-    <script>
-        let cartCount = 0;
-        const buttons = document.querySelectorAll('.add-to-cart');
-        const cartDisplay = document.getElementById('cart-count');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                cartCount++;
-                cartDisplay.textContent = cartCount;
-            });
-        });
-    </script>
 </body>
 </html>
